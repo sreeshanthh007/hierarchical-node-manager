@@ -1,6 +1,6 @@
 import './App.css'
 import { Toaster } from 'sonner'
-import { TreePage } from '@/pages/TreePage'
+import { TreePage } from '@/pages/tree/TreePage'
 
 function App() {
   return (

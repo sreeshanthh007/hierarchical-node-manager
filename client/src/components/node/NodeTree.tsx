@@ -5,18 +5,19 @@ import { NodeItem } from './NodeItem';
 
 interface NodeTreeProps {
   nodes: Node[];
-  onAddNode: (parentId: string | null) => void;
   onDeleteNode: (nodeId: string) => void;
+  level?: number;
 }
 
-export const NodeTree: React.FC<NodeTreeProps> = memo(({ nodes, onAddNode, onDeleteNode }) => {
+export const NodeTree: React.FC<NodeTreeProps> = memo(({ nodes, onDeleteNode, level = 0 }) => {
   return (
-    <div className="flex flex-col gap-2">
-      {nodes.map((node) => (
+    <div className="flex flex-col">
+      {nodes.map((node, index) => (
         <NodeItem
           key={node._id}
           node={node}
-          onAddNode={onAddNode}
+          level={level}
+          isLast={index === nodes.length - 1}
           onDeleteNode={onDeleteNode}
         />
       ))}
