@@ -1,7 +1,7 @@
 
 import { createNode, deleteNode, getAllNodes } from "@services/node.service";
 import { HttpStatusCodes } from "@shared/constants/httpStatusCode";
-import { SUCCESS_MESSAGES } from "@shared/constants/messages";
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "@shared/constants/messages";
 import { createNodeSchema } from "@validators/node.validator";
 import { NextFunction, Request, Response } from "express";
 
@@ -40,7 +40,7 @@ export const CreateNodeController = async (req: Request, res: Response, next: Ne
 export const GetAllNodesController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const nodes = await getAllNodes();
-
+        
         res.status(HttpStatusCodes.OK).json({
             success: true,
             message: SUCCESS_MESSAGES.NODES_FETCHED_SUCCESSFULLY,
@@ -56,6 +56,15 @@ export const GetAllNodesController = async (req: Request, res: Response, next: N
 export const DeleteNodeController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const { id } = req.params as {id:string};
+
+        if(!id){
+            res.status(HttpStatusCodes.BAD_REQUEST).json({
+                success: false,
+                message: ERROR_MESSAGES.NODE_ID_REQUIRED
+            });
+
+            return;
+        }
 
         await deleteNode(id);
 
