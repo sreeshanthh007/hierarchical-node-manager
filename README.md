@@ -36,21 +36,27 @@ Hierarchical Node Manager is a sophisticated and intuitive web application desig
 
 ```text
 Hierarchical Node Manager/
-├── api/                # Express Backend
+├── api/                     # Express Backend (Node.js + TypeScript)
 │   ├── src/
-│   │   ├── controllers/ # Request handlers
-│   │   ├── models/      # Mongoose schemas
-│   │   ├── routes/      # API endpoints
-│   │   ├── services/    # Business logic
-│   │   ├── shared/      # Constants & Utils
-│   │   └── server.ts    # Main entry point
+│   │   ├── controllers/     # Request handlers
+│   │   ├── routes/          # API endpoints
+│   │   ├── services/        # Business logic
+│   │   ├── models/          # Database schemas
+│   │   ├── middlewares/     # Custom middleware
+│   │   ├── dto/             # DTO's
+│   │   ├── config/          # App & DB configuration
+│   │   ├── validators/      # Request validation logic
+│   │   └── server.ts        # Application entry point
 │   └── package.json
-└── client/             # Vite Frontend
+└── client/                 # Vite Frontend (React + TypeScript)
     ├── src/
-    │   ├── components/  # Reusable UI components
-    │   ├── pages/       # Page views
-    │   ├── types/       # TypeScript declarations
-    │   └── App.tsx      # Main application logic
+    │   ├── components/     # Reusable UI components
+    │   ├── pages/          # Application pages (routes)
+    │   ├── services/       # API calls
+    │   ├── hooks/          # Custom React hooks
+    │   ├── utils/          # Helper functions & constants
+    │   ├── types/          # TypeScript types
+    │   └── App.tsx         # Root component
     ├── index.html
     └── package.json
 ```
